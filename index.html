@@ -20,6 +20,8 @@
             background: #0a0e17;
             color: #ffffff;
             line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
         }
 
         /* Navbar - Mobile First */
@@ -34,6 +36,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             border-bottom: 1px solid #ff6b8133;
+            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -50,12 +53,13 @@
             display: none;
             width: 100%;
             flex-direction: column;
-            background: #0a0e17;
+            background: rgba(10, 15, 25, 0.95);
             padding: 1.5rem;
             border-radius: 20px;
             margin-top: 1rem;
             gap: 1rem;
             border: 1px solid #ff6b8133;
+            backdrop-filter: blur(10px);
         }
 
         .nav-links.show {
@@ -90,6 +94,8 @@
             max-width: 1300px;
             margin: 0 auto;
             padding: 1.5rem 5%;
+            position: relative;
+            z-index: 10;
         }
 
         /* Hero Section - Mobile */
@@ -125,11 +131,13 @@
             padding: 1.2rem 0.8rem;
             text-align: center;
             transition: 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .feature-card:hover {
             border-color: #ff6b81;
             transform: translateY(-5px);
+            background: rgba(255, 107, 129, 0.1);
         }
 
         .feature-icon {
@@ -169,6 +177,137 @@
             padding-left: 1rem;
         }
 
+        /* Student Special Banner */
+        .student-banner {
+            background: linear-gradient(135deg, #ff6b81, #ff9f7c);
+            border-radius: 30px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 2px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 107, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .student-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 107, 129, 0.5);
+        }
+
+        .student-banner::before {
+            content: '🔥';
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.1;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .student-banner::after {
+            content: '🔥';
+            position: absolute;
+            font-size: 5rem;
+            opacity: 0.1;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .student-banner h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-shadow: 2px 2px 0 #00000030;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-banner p {
+            font-size: 1.1rem;
+            color: #1a1e2b;
+            font-weight: 600;
+        }
+
+        .clickable-text {
+            background: #1a1e2b;
+            color: #ffd700;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 700;
+            border: 2px solid white;
+            font-size: 1.2rem;
+            animation: pulse-glow 1.5s infinite;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .clickable-text:hover {
+            background: #ffd700;
+            color: #1a1e2b;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ffd700;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 10px #ffd700;
+            }
+            50% {
+                box-shadow: 0 0 30px #ffd700, 0 0 50px #ff6b81;
+            }
+        }
+
+        /* Platform Tabs */
+        .platform-tabs {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #ff6b8133;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            flex: 1;
+            text-align: center;
+            min-width: 120px;
+            backdrop-filter: blur(5px);
+        }
+
+        .platform-tab i {
+            margin-right: 0.5rem;
+            color: #ff9f7c;
+        }
+
+        .platform-tab.active {
+            background: #ff6b81;
+            border-color: #ff6b81;
+            color: white;
+        }
+
+        .platform-tab.active i {
+            color: white;
+        }
+
+        /* Platform Content */
+        .platform-content {
+            display: none;
+        }
+
+        .platform-content.active {
+            display: block;
+        }
+
         /* Product Grid */
         .product-grid {
             display: grid;
@@ -184,12 +323,14 @@
             padding: 1.5rem 1.2rem;
             position: relative;
             transition: 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         .product-card:hover {
             border-color: #ff6b81;
             transform: translateY(-5px);
             box-shadow: 0 10px 30px #ff6b8120;
+            background: rgba(30, 40, 55, 0.9);
         }
 
         .product-badge {
@@ -208,6 +349,7 @@
         .badge-hot { background: #fa8231; }
         .badge-best { background: #f7b731; color: #1a1e2b; }
         .badge-popular { background: #2d98da; }
+        .badge-student { background: #00b894; color: white; }
 
         .product-icon {
             font-size: 3rem;
@@ -293,7 +435,7 @@
             background: #075E54;
         }
 
-        /* Modal */
+        /* Modal - PERBAIKAN TOTAL */
         .modal {
             display: none;
             position: fixed;
@@ -301,84 +443,130 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 999999;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 20px;
+            backdrop-filter: blur(5px);
         }
 
         .modal.active {
-            display: flex;
+            display: flex !important;
         }
 
         .modal-content {
             background: #1a2436;
             border-radius: 30px;
-            max-width: 90%;
+            max-width: 500px;
             width: 100%;
-            padding: 1.8rem;
+            padding: 2rem;
             position: relative;
-            border: 1px solid #ff6b81;
-            animation: modalFade 0.3s;
-            margin: 1rem;
+            border: 3px solid #ffd700;
+            animation: modalPop 0.3s ease;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            margin: auto;
+        }
+
+        @keyframes modalPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
 
         .modal-close {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
             border: none;
-            color: #94a9c5;
+            color: #ffd700;
             font-size: 2rem;
             cursor: pointer;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 215, 0, 0.3);
+            transform: rotate(90deg);
         }
 
         .modal-content h2 {
-            font-size: 1.6rem;
+            font-size: 2.2rem;
+            font-weight: 800;
             color: #ffffff;
             margin-bottom: 0.5rem;
+            padding-right: 40px;
+            line-height: 1.2;
         }
 
         .modal-price {
-            font-size: 1.6rem;
-            color: #ffb347;
-            margin: 0.8rem 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin: 1.2rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            border: 2px solid #ffd700;
         }
 
         .modal-icon {
-            font-size: 4rem;
+            font-size: 5rem;
             text-align: center;
-            margin: 0.8rem 0;
+            margin: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 30px;
         }
 
         .modal-desc {
             background: #0f172a;
-            padding: 1.2rem;
+            padding: 1.8rem;
             border-radius: 20px;
-            margin: 1.2rem 0;
-            color: #cbd5e8;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            margin: 1.8rem 0;
+            color: #e2e8f0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            border-left: 5px solid #ffd700;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .modal-channel-btn {
-            display: block;
-            background: #128C7E;
+            display: flex;
+            background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 1rem;
+            padding: 1.2rem;
             border-radius: 50px;
-            font-weight: 600;
-            margin-top: 1rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
             width: 100%;
             text-align: center;
-            min-height: 48px;
-            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 1rem;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            border: 2px solid #25D366;
+        }
+
+        .modal-channel-btn:hover {
+            background: transparent;
+            color: #25D366;
         }
 
         /* Contact Page - Dengan Foto Alien */
@@ -387,6 +575,7 @@
             border-radius: 30px;
             padding: 1.5rem;
             border: 1px solid #ff6b8133;
+            backdrop-filter: blur(5px);
         }
 
         .contact-grid {
@@ -430,6 +619,7 @@
             color: #94a9c5;
             border: 2px dashed #ff6b8133;
             min-height: 300px;
+            backdrop-filter: blur(5px);
         }
 
         .alien-image-container {
@@ -464,13 +654,6 @@
             box-shadow: 0 0 30px #2ecc71;
         }
 
-        .alien-name {
-            font-size: 1.2rem;
-            color: #f1c40f;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
         .alien-location-text {
             display: flex;
             align-items: center;
@@ -484,10 +667,10 @@
             color: #ff6b81;
         }
 
-        /* Alien Gallery */
+        /* Alien Gallery - Dengan Animasi */
         .alien-gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 0.8rem;
             margin: 1rem 0;
         }
@@ -501,15 +684,201 @@
             align-items: center;
             gap: 0.3rem;
             border: 1px solid #ff6b8133;
+            transition: all 0.3s ease;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            position: relative;
+            cursor: pointer;
         }
 
+        /* Animasi berbeda untuk setiap alien */
+        .alien-mini:nth-child(1) {
+            animation-name: floatAlien1;
+            background: linear-gradient(145deg, #2c3e50, #1e2a3a);
+            border-color: #ffd700;
+        }
+
+        .alien-mini:nth-child(2) {
+            animation-name: floatAlien2;
+            background: linear-gradient(145deg, #2c3e50, #1a2f3f);
+            border-color: #7eff00;
+            animation-delay: 0.5s;
+        }
+
+        .alien-mini:nth-child(3) {
+            animation-name: floatAlien3;
+            background: linear-gradient(145deg, #2c3e50, #2a1e3a);
+            border-color: #ff6b81;
+            animation-delay: 1s;
+        }
+
+        .alien-mini:nth-child(4) {
+            animation-name: floatAlien4;
+            background: linear-gradient(145deg, #2c3e50, #3a1e2a);
+            border-color: #00ffff;
+            animation-delay: 1.5s;
+        }
+
+        /* Keyframes untuk animasi */
+        @keyframes floatAlien1 {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            }
+            25% {
+                transform: translateY(-10px) rotate(-5deg) scale(1.05);
+                box-shadow: 0 15px 25px rgba(255, 215, 0, 0.6);
+            }
+            50% {
+                transform: translateY(-5px) rotate(5deg) scale(1.1);
+                box-shadow: 0 20px 30px rgba(255, 215, 0, 0.8);
+            }
+            75% {
+                transform: translateY(-8px) rotate(-3deg) scale(1.05);
+                box-shadow: 0 15px 25px rgba(255, 215, 0, 0.6);
+            }
+        }
+
+        @keyframes floatAlien2 {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+                box-shadow: 0 5px 15px rgba(126, 255, 0, 0.3);
+            }
+            33% {
+                transform: translateY(-8px) translateX(5px) scale(1.08);
+                box-shadow: 0 15px 25px rgba(126, 255, 0, 0.6);
+            }
+            66% {
+                transform: translateY(-12px) translateX(-5px) scale(1.12);
+                box-shadow: 0 20px 30px rgba(126, 255, 0, 0.8);
+            }
+        }
+
+        @keyframes floatAlien3 {
+            0%, 100% {
+                transform: translateY(0) rotateY(0deg) scale(1);
+                box-shadow: 0 5px 15px rgba(255, 107, 129, 0.3);
+            }
+            25% {
+                transform: translateY(-10px) rotateY(180deg) scale(1.1);
+                box-shadow: 0 15px 25px rgba(255, 107, 129, 0.6);
+            }
+            50% {
+                transform: translateY(-5px) rotateY(360deg) scale(1.15);
+                box-shadow: 0 20px 30px rgba(255, 107, 129, 0.8);
+            }
+            75% {
+                transform: translateY(-8px) rotateY(180deg) scale(1.1);
+                box-shadow: 0 15px 25px rgba(255, 107, 129, 0.6);
+            }
+        }
+
+        @keyframes floatAlien4 {
+            0%, 100% {
+                transform: translate(0) skew(0deg);
+                box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+                filter: hue-rotate(0deg);
+            }
+            10% {
+                transform: translate(-2px, 2px) skew(5deg);
+                filter: hue-rotate(90deg);
+                box-shadow: 0 15px 25px rgba(0, 255, 255, 0.6);
+            }
+            20% {
+                transform: translate(2px, -2px) skew(-5deg);
+                filter: hue-rotate(180deg);
+                box-shadow: 0 20px 30px rgba(0, 255, 255, 0.8);
+            }
+            30% {
+                transform: translate(-2px, -2px) skew(5deg);
+                filter: hue-rotate(270deg);
+            }
+            40% {
+                transform: translate(2px, 2px) skew(-5deg);
+                filter: hue-rotate(360deg);
+            }
+            50% {
+                transform: translate(0) skew(0deg);
+                filter: hue-rotate(0deg);
+            }
+        }
+
+        /* Hover effect - animasi berhenti dan scale lebih besar */
+        .alien-mini:hover {
+            animation-play-state: paused;
+            transform: scale(1.2);
+            z-index: 10;
+            cursor: pointer;
+            filter: brightness(1.2);
+            border-width: 2px;
+        }
+
+        /* Efek tambahan: sinar di sekitar alien */
+        .alien-mini::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, 
+                rgba(255,215,0,0.3), 
+                rgba(126,255,0,0.3), 
+                rgba(255,107,129,0.3),
+                rgba(0,255,255,0.3));
+            filter: blur(10px);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .alien-mini:hover::after {
+            opacity: 1;
+        }
+
+        /* Animasi untuk emoji di dalam */
         .alien-mini span {
+            display: inline-block;
             font-size: 2rem;
         }
 
-        .alien-mini p {
-            font-size: 0.7rem;
-            color: #94a9c5;
+        .alien-mini:nth-child(1) span {
+            animation: spin 3s infinite linear;
+        }
+
+        .alien-mini:nth-child(2) span {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .alien-mini:nth-child(3) span {
+            animation: wobble 2.5s infinite;
+        }
+
+        .alien-mini:nth-child(4) span {
+            animation: bounce 1.8s infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-15deg); }
+            75% { transform: rotate(15deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .footer {
@@ -519,6 +888,9 @@
             border-top: 1px solid #ff6b8133;
             color: #94a9c5;
             font-size: 0.9rem;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
         }
 
         /* Tablet */
@@ -535,6 +907,7 @@
                 padding: 0;
                 margin-top: 0;
                 border: none;
+                backdrop-filter: none;
             }
 
             .hero-title {
@@ -556,6 +929,10 @@
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .platform-tabs {
+                flex-wrap: nowrap;
+            }
         }
 
         /* Desktop */
@@ -564,9 +941,319 @@
                 grid-template-columns: repeat(3, 1fr);
             }
         }
+
+        /* ===== EFEK AIR JATUH (PUTIH) ===== */
+        .rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 20;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .rain-container.active {
+            display: block;
+        }
+        
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.3) 100%);
+            border-radius: 0 0 5px 5px;
+            animation: fall linear infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            animation: ripple 1.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 21;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-20vh) translateX(0) rotate(0deg);
+                opacity: 0.9;
+            }
+            70% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) translateX(30px) rotate(5deg);
+                opacity: 0.1;
+            }
+        }
+        
+        @keyframes ripple {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 0.8;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            100% {
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+        
+        .dew-drop {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #aaddff);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+            animation: glisten 4s infinite;
+            z-index: 19;
+            pointer-events: none;
+        }
+        
+        @keyframes glisten {
+            0%, 100% { 
+                opacity: 0.5; 
+                transform: scale(1); 
+                filter: blur(1px);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.3); 
+                filter: blur(0);
+                box-shadow: 0 0 20px #ffffff;
+            }
+        }
+
+        .water-puddle {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(2px);
+            z-index: 18;
+            pointer-events: none;
+            animation: puddleGlow 5s infinite;
+            display: none;
+        }
+        
+        .water-puddle.active {
+            display: block;
+        }
+
+        @keyframes puddleGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* AIM Lock Menu */
+        .aimlock-menu {
+            background: #1a2436;
+            border-radius: 30px;
+            padding: 1.5rem;
+            margin: 1rem 0 2rem;
+            border: 2px solid #ffd700;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            animation: slideDown 0.5s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .aimlock-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .aimlock-header i {
+            font-size: 2rem;
+            color: #ffd700;
+        }
+
+        .aimlock-header h3 {
+            font-size: 1.8rem;
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .aimlock-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .aimlock-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #ff6b8133;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .aimlock-item:hover {
+            border-color: #ffd700;
+            transform: translateX(10px);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .aimlock-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .aimlock-info span {
+            font-size: 2rem;
+        }
+
+        .aimlock-info h4 {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        .aimlock-info p {
+            font-size: 0.85rem;
+            color: #94a9c5;
+        }
+
+        .aimlock-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .aimlock-price::before {
+            content: 'Rp';
+            font-size: 0.8rem;
+            color: #94a9c5;
+            margin-right: 0.2rem;
+        }
+
+        @media (min-width: 768px) {
+            .aimlock-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .aimlock-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ===== EFEK BINTIK-BINTIK UNGU PUTIH ===== */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(138, 43, 226, 0.6));
+            filter: blur(1px);
+            animation: float-particle linear infinite;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+                transform: translateY(80vh) translateX(10px) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(50vh) translateX(-20px) scale(1);
+            }
+            90% {
+                opacity: 0.6;
+                transform: translateY(20vh) translateX(15px) scale(0.8);
+            }
+            100% {
+                transform: translateY(-20vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Efek bintik berkedip (twinkling) */
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Bintik statis yang berkedip */
+        .static-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(200, 160, 255, 0.4));
+            filter: blur(2px);
+            animation: twinkle 3s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Pastikan konten utama di atas efek */
+        .navbar, .container, .footer {
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
+    <!-- Efek Bintik-bintik Background -->
+    <div class="particles-container" id="particles-container"></div>
+    <div class="static-particles" id="static-particles"></div>
+
+    <!-- Efek Air Jatuh Putih -->
+    <div class="rain-container" id="rain-container"></div>
+    <div class="water-puddle" id="waterPuddle"></div>
+
     <nav class="navbar">
         <div class="logo">JURAGAN X REZXIT</div>
         <div class="menu-toggle" id="menuToggle">
@@ -581,6 +1268,7 @@
 
     <main class="container" id="mainContent"></main>
 
+    <!-- Modal Detail Produk - PASTIKAN DI LUAR MAIN CONTENT -->
     <div class="modal" id="productModal">
         <div class="modal-content">
             <button class="modal-close" id="closeModal">&times;</button>
@@ -590,16 +1278,35 @@
 
     <footer class="footer">
         <p>© 2025 JURAGAN X REZXIT — File & Mod Premium FF Terlengkap</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">👽 Kantor Virtual bersama Alien Friends 👽</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">👽 Kantor Garena bersama Alien Friends 👽</p>
     </footer>
 
     <script>
-        const products = [
-            { id: 1, name: 'REZXIT DRAG HS 38%', price: 30000, shortDesc: 'Perfect untuk pemula, tingkatkan akurasi headshot dengan mudah', fullDesc: 'RezXit HS 38% — cocok untuk pemula. File teruji, akurasi meningkat signifikan. Support Android dan iOS.', icon: '🎯', badge: null },
-            { id: 2, name: 'REZXIT DRAG HS 55%', price: 50000, shortDesc: 'Level menengah dengan tingkat akurasi yang lebih baik', fullDesc: 'RezXit HS 55% untuk pemain menengah. Rasio headshot stabil, anti lag. Update terbaru patch OB45.', icon: '⚡', badge: null },
-            { id: 3, name: 'REZXIT DRAG HS 78%', price: 100000, shortDesc: 'High accuracy untuk player competitive', fullDesc: 'POPULAR · RezXit HS 78%. Akurasi tinggi, settingan pro. Work di semua server.', icon: '🔥', badge: 'POPULAR' },
-            { id: 4, name: 'REZXIT DRAG HS 89%', price: 145000, shortDesc: 'Pro level dengan akurasi sangat tinggi', fullDesc: 'HOT · RezXit HS 98% untuk rank push. Akurasi mendekati sempurna, anti banned 30 hari.', icon: '💎', badge: 'HOT' },
-            { id: 5, name: 'REZXIT DRAG HS 98%', price: 175000, shortDesc: 'Maximum accuracy - Godlike level!', fullDesc: 'BEST · RezXit HS 98% versi MAX. Akurasi 98% stabil, fitur unlock all skin.', icon: '👑', badge: 'BEST' }
+        // Data produk untuk Android
+        const androidProducts = [
+            { id: 1, name: 'REZXIT DRAG HS 38%', price: 30000, shortDesc: 'Perfect untuk pemula Android, tingkatkan akurasi headshot dengan mudah', fullDesc: 'RezXit HS 38% — cocok untuk pemula Android. File teruji, akurasi meningkat signifikan. Support Android.', icon: '📱', badge: null, platform: 'android' },
+            { id: 2, name: 'REZXIT DRAG HS 55%', price: 50000, shortDesc: 'Level menengah Android dengan tingkat akurasi yang lebih baik', fullDesc: 'RezXit HS 55% untuk pemain menengah Android. Rasio headshot stabil, anti lag. Update terbaru patch Terbaru.', icon: '⚡', badge: null, platform: 'android' },
+            { id: 3, name: 'REZXIT DRAG HS 78%', price: 100000, shortDesc: 'High accuracy untuk player competitive Android', fullDesc: 'POPULAR · RezXit HS 78%. Akurasi tinggi, settingan pro. Work di semua server Android.', icon: '🔥', badge: 'POPULAR', platform: 'android' },
+            { id: 4, name: 'REZXIT DRAG HS 89%', price: 145000, shortDesc: 'Pro level Android dengan akurasi sangat tinggi', fullDesc: 'HOT · RezXit HS 89% untuk rank push Android. Akurasi mendekati sempurna, anti banned 30 hari.', icon: '💎', badge: 'HOT', platform: 'android' },
+            { id: 5, name: 'REZXIT DRAG HS 98%', price: 175000, shortDesc: 'Maximum accuracy Android - Godlike level!', fullDesc: 'BEST · RezXit HS 98% versi MAX Android. Akurasi 98% stabil, fitur unlock all skin.', icon: '👑', badge: 'BEST', platform: 'android' }
+        ];
+
+        // Data produk untuk iOS
+        const iosProducts = [
+            { id: 101, name: 'REZXIT DRAG HS 35% iOS', price: 35000, shortDesc: 'Perfect untuk pemula iOS, optimasi khusus untuk iPhone/iPad', fullDesc: 'RezXit HS 35% — khusus iOS. File teruji untuk iPhone dan iPad, akurasi meningkat signifikan tanpa lag.', icon: '🍎', badge: null, platform: 'ios' },
+            { id: 102, name: 'REZXIT DRAG HS 50% iOS', price: 55000, shortDesc: 'Level menengah iOS dengan performa stabil', fullDesc: 'RezXit HS 50% untuk pemain menengah iOS. Rasio headshot stabil, kompatibel dengan iOS terbaru.', icon: '⚡', badge: null, platform: 'ios' },
+            { id: 103, name: 'REZXIT DRAG HS 75% iOS', price: 110000, shortDesc: 'High accuracy untuk player competitive iOS', fullDesc: 'POPULAR · RezXit HS 75% iOS. Akurasi tinggi, settingan pro untuk iPhone X ke atas.', icon: '🔥', badge: 'POPULAR', platform: 'ios' },
+            { id: 104, name: 'REZXIT DRAG HS 85% iOS', price: 155000, shortDesc: 'Pro level iOS dengan akurasi sangat tinggi', fullDesc: 'HOT · RezXit HS 85% untuk rank push iOS. Akurasi mendekati sempurna, anti banned.', icon: '💎', badge: 'HOT', platform: 'ios' },
+            { id: 105, name: 'REZXIT DRAG HS 95% iOS', price: 195000, shortDesc: 'Maximum accuracy iOS - Godlike level!', fullDesc: 'BEST · RezXit HS 95% versi MAX iOS. Akurasi 95% stabil, fitur unlock all skin khusus iOS.', icon: '👑', badge: 'BEST', platform: 'ios' }
+        ];
+
+        // Data produk khusus DANA PELAJAR - AIM LOCK
+        const studentProducts = [
+            { id: 201, name: 'AIM LOCK V1', price: 10000, shortDesc: 'Aim Lock basic untuk pemula, ringan dan stabil', fullDesc: 'AIM LOCK V1 - Versi dasar dengan fitur aim lock sederhana. Cocok untuk pemula yang ingin mencoba. Ringan di HP dan mudah digunakan.', icon: '🎯', badge: 'STUDENT', platform: 'student' },
+            { id: 202, name: 'AIM LOCK V2', price: 20000, shortDesc: 'Peningkatan akurasi dengan sensor lebih responsif', fullDesc: 'AIM LOCK V2 - Peningkatan dari V1 dengan sensor lebih responsif. Akurasi meningkat 20% dari versi sebelumnya.', icon: '🎯', badge: 'STUDENT', platform: 'student' },
+            { id: 203, name: 'AIM LOCK V3 LITE', price: 35000, shortDesc: 'Versi ringan dengan fitur lengkap, tanpa lag', fullDesc: 'AIM LOCK V3 LITE - Versi ringan dengan fitur lengkap. Tanpa lag, cocok untuk HP spesifikasi menengah.', icon: '⚡', badge: 'STUDENT', platform: 'student' },
+            { id: 204, name: 'AIM LOCK V4 PRO', price: 50000, shortDesc: 'Pro version dengan aim lock presisi tinggi', fullDesc: 'AIM LOCK V4 PRO - Versi profesional dengan aim lock presisi tinggi. Fitur lengkap untuk rank push.', icon: '💎', badge: 'STUDENT', platform: 'student' },
+            { id: 205, name: 'AIM LOCK V5 ULTRA', price: 70000, shortDesc: 'Ultimate version, aim lock maksimal + anti banned', fullDesc: 'AIM LOCK V5 ULTRA - Versi terbaik dengan aim lock maksimal. Dilengkapi anti banned system, fitur unlock all skin.', icon: '👑', badge: 'STUDENT', platform: 'student' }
         ];
 
         const channelUrl = 'https://www.whatsapp.com/channel/0029VbCZAj2It5s53GawHg2S';
@@ -610,29 +1317,167 @@
         const modal = document.getElementById('productModal');
         const modalContent = document.getElementById('modalContent');
         const closeModal = document.getElementById('closeModal');
+        
+        // Element untuk efek hujan
+        const rainContainer = document.getElementById('rain-container');
+        const waterPuddle = document.getElementById('waterPuddle');
 
-        function renderPage(page) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.dataset.page === page) link.classList.add('active');
+        // State untuk menu AIM LOCK
+        let aimlockMenuVisible = false;
+
+        // Fungsi untuk toggle menu AIM LOCK
+        window.toggleAimlockMenu = function() {
+            aimlockMenuVisible = !aimlockMenuVisible;
+            const menuElement = document.getElementById('aimlock-menu-container');
+            
+            if (menuElement) {
+                if (aimlockMenuVisible) {
+                    menuElement.style.display = 'block';
+                } else {
+                    menuElement.style.display = 'none';
+                }
+            }
+        };
+
+        // Fungsi untuk render menu AIM LOCK
+        function renderAimlockMenu() {
+            let menuHTML = `
+                <div id="aimlock-menu-container" class="aimlock-menu" style="display: none;">
+                    <div class="aimlock-header">
+                        <i class="fas fa-crosshairs"></i>
+                        <h3>AIM LOCK SERIES</h3>
+                    </div>
+                    <div class="aimlock-grid">
+            `;
+
+            studentProducts.forEach(product => {
+                menuHTML += `
+                    <div class="aimlock-item" onclick="openModal(${product.id}, 'student')">
+                        <div class="aimlock-info">
+                            <span>${product.icon}</span>
+                            <div>
+                                <h4>${product.name}</h4>
+                                <p>${product.shortDesc}</p>
+                            </div>
+                        </div>
+                        <div class="aimlock-price">Rp ${product.price.toLocaleString('id-ID')}</div>
+                    </div>
+                `;
             });
 
+            menuHTML += `
+                    </div>
+                </div>
+            `;
+            
+            return menuHTML;
+        }
+
+        // Fungsi untuk render produk berdasarkan platform
+        function renderProducts(platform) {
+            let products = [];
+            if (platform === 'android') {
+                products = androidProducts;
+            } else if (platform === 'ios') {
+                products = iosProducts;
+            } else if (platform === 'student') {
+                products = studentProducts;
+            }
+            
+            let productsHTML = `<div class="product-grid">`;
+
+            products.forEach(product => {
+                let badgeClass = 'product-badge';
+                if (product.badge === 'HOT') badgeClass += ' badge-hot';
+                else if (product.badge === 'BEST') badgeClass += ' badge-best';
+                else if (product.badge === 'POPULAR') badgeClass += ' badge-popular';
+                else if (product.badge === 'STUDENT') badgeClass += ' badge-student';
+
+                productsHTML += `
+                    <div class="product-card">
+                        ${product.badge ? `<div class="${badgeClass}">${product.badge === 'STUDENT' ? '🔥 ' + product.badge : product.badge}</div>` : ''}
+                        <div class="product-icon">${product.icon}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-desc">${product.shortDesc}</div>
+                        <div class="product-price">Rp ${product.price.toLocaleString('id-ID')}</div>
+                        <div class="card-actions">
+                            <button class="btn-detail" onclick="openModal(${product.id}, '${platform}')">
+                                <i class="fas fa-info-circle"></i> Detail
+                            </button>
+                            <a href="${channelUrl}" target="_blank" class="btn-channel">
+                                <i class="fab fa-whatsapp"></i> Order
+                            </a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            productsHTML += '</div>';
+            return productsHTML;
+        }
+
+        // Fungsi untuk merender halaman
+        function renderPage(page) {
+            // Update active class di navigasi
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === page) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Kontrol hujan: aktif hanya di halaman products
+            if (page === 'products') {
+                rainContainer.classList.add('active');
+                waterPuddle.classList.add('active');
+                if (typeof startRain === 'function') startRain();
+            } else {
+                rainContainer.classList.remove('active');
+                waterPuddle.classList.remove('active');
+                if (typeof stopRain === 'function') stopRain();
+            }
+
+            // Konten berdasarkan halaman
             if (page === 'home') {
                 mainContent.innerHTML = `
                     <div class="hero-title">JURAGAN X REZXIT</div>
-                    <div class="hero-sub">File & Mod Premium FF Terlengkap — Koleksi file dan mod Free Fire terlengkap dengan kualitas terbaik. RezXit, Rimbot, hingga Mod Menu untuk Android, iOS, dan PC. Trusted seller dengan ribuan customer puas.</div>
+                    <div class="hero-sub">File & Mod Premium FF Terlengkap — Koleksi file dan mod Free Fire terlengkap dengan kualitas terbaik. JURAGANxREZXIT, Aimbot, hingga Mod Menu untuk Android, iOS, dan PC. Trusted seller dengan ribuan customer puas.</div>
                     
                     <div class="features-grid">
-                        <div class="feature-card"><i class="fas fa-check-circle feature-icon"></i><h4>File Berkualitas</h4><p>Semua file teruji dan terbukti bekerja dengan baik.</p></div>
-                        <div class="feature-card"><i class="fas fa-sync-alt feature-icon"></i><h4>Update Rutin</h4><p>File selalu diupdate mengikuti patch terbaru.</p></div>
-                        <div class="feature-card"><i class="fas fa-shield-alt feature-icon"></i><h4>Anti Banned</h4><p>System keamanan berlapis untuk melindungi akun.</p></div>
-                        <div class="feature-card"><i class="fas fa-headset feature-icon"></i><h4>Support 24/7</h4><p>Tim support siap membantu instalasi kapan saja.</p></div>
-                        <div class="feature-card"><i class="fas fa-star feature-icon"></i><h4>Trusted Seller</h4><p>Dipercaya ribuan customer dengan rating 5 bintang.</p></div>
-                        <div class="feature-card"><i class="fas fa-bolt feature-icon"></i><h4>Proses Cepat</h4><p>File langsung dikirim setelah pembayaran.</p></div>
+                        <div class="feature-card">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <h4>File Berkualitas</h4>
+                            <p>Semua file teruji dan terbukti bekerja dengan baik.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-sync-alt feature-icon"></i>
+                            <h4>Update Rutin</h4>
+                            <p>File selalu diupdate mengikuti patch terbaru.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt feature-icon"></i>
+                            <h4>Anti Banned</h4>
+                            <p>System keamanan berlapis untuk melindungi akun.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-headset feature-icon"></i>
+                            <h4>Support 24/7</h4>
+                            <p>Tim support siap membantu instalasi kapan saja.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-star feature-icon"></i>
+                            <h4>Trusted Seller</h4>
+                            <p>Dipercaya ribuan customer dengan rating 5 bintang.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-bolt feature-icon"></i>
+                            <h4>Proses Cepat</h4>
+                            <p>File langsung dikirim setelah pembayaran.</p>
+                        </div>
                     </div>
 
                     <div class="section-label">List File JURAGAN X REZXIT</div>
-                    <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda <strong>ANDROID</strong></div>
+                    <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda</div>
                     
                     <button class="btn-detail" onclick="renderPage('products')" style="width: 100%; padding: 1rem;">
                         <i class="fas fa-arrow-right"></i> Lihat Semua File
@@ -640,40 +1485,47 @@
                 `;
             }
             else if (page === 'products') {
-                let productsHTML = `
+                // Reset state menu saat masuk halaman products
+                aimlockMenuVisible = false;
+                
+                mainContent.innerHTML = `
                     <div class="section-label">List File JURAGAN X REZXIT</div>
-                    <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda <strong>ANDROID</strong></div>
-                    <div class="product-grid">
-                `;
-
-                products.forEach(product => {
-                    const shortDesc = product.shortDesc.length > 50 ? product.shortDesc.substring(0, 50) + '...' : product.shortDesc;
-                    let badgeClass = 'product-badge';
-                    if (product.badge === 'HOT') badgeClass += ' badge-hot';
-                    else if (product.badge === 'BEST') badgeClass += ' badge-best';
-                    else if (product.badge === 'POPULAR') badgeClass += ' badge-popular';
-
-                    productsHTML += `
-                        <div class="product-card">
-                            ${product.badge ? `<div class="${badgeClass}">${product.badge}</div>` : ''}
-                            <div class="product-icon">${product.icon}</div>
-                            <div class="product-name">${product.name}</div>
-                            <div class="product-desc">${shortDesc}</div>
-                            <div class="product-price">${product.price.toLocaleString('id-ID')}</div>
-                            <div class="card-actions">
-                                <button class="btn-detail" onclick="openModal(${product.id})">
-                                    <i class="fas fa-info-circle"></i> Detail
-                                </button>
-                                <a href="${channelUrl}" target="_blank" class="btn-channel">
-                                    <i class="fab fa-whatsapp"></i> Order
-                                </a>
-                            </div>
+                    
+                    <!-- Banner Khusus DANA PELAJAR dengan tombol klik -->
+                    <div class="student-banner" onclick="toggleAimlockMenu()">
+                        <h3>🔥 KHUSUS DANA PELAJAR 🔥</h3>
+                        <p>AIM LOCK MURAH MERIAH KHUSUS BUAT KAMU!</p>
+                        <div class="clickable-text">
+                            KLIK DI SINI <i class="fas fa-chevron-down" style="margin-left: 0.5rem;"></i>
                         </div>
-                    `;
-                });
-
-                productsHTML += '</div>';
-                mainContent.innerHTML = productsHTML;
+                    </div>
+                    
+                    <!-- Menu AIM LOCK (akan muncul saat diklik) -->
+                    ${renderAimlockMenu()}
+                    
+                    <div style="margin: 3rem 0 1rem;">
+                        <div class="section-label">PREMIUM SERIES</div>
+                    </div>
+                    
+                    <div class="platform-tabs">
+                        <div class="platform-tab active" onclick="switchPlatform('android', event)">
+                            <i class="fas fa-robot"></i> ANDROID
+                        </div>
+                        <div class="platform-tab" onclick="switchPlatform('ios', event)">
+                            <i class="fab fa-apple"></i> IOS
+                        </div>
+                    </div>
+                    
+                    <div id="android-content" class="platform-content active">
+                        <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda <strong>ANDROID</strong></div>
+                        ${renderProducts('android')}
+                    </div>
+                    
+                    <div id="ios-content" class="platform-content">
+                        <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda <strong>IOS</strong></div>
+                        ${renderProducts('ios')}
+                    </div>
+                `;
             }
             else if (page === 'contact') {
                 mainContent.innerHTML = `
@@ -682,28 +1534,38 @@
                         <div class="contact-grid">
                             <div class="contact-info">
                                 <h3>Hubungi Kami</h3>
-                                <div class="contact-item"><i class="fas fa-map-pin"></i><span>Jl. Alien Bimasakti No. 42, Planet X</span></div>
-                                <div class="contact-item"><i class="fas fa-phone"></i><span>+992 92 630 8814</span></div>
-                                <div class="contact-item"><i class="fas fa-envelope"></i><span>alien@juraganshop.com</span></div>
-                                <div class="contact-item"><i class="fab fa-whatsapp"></i><span>Channel: @JURAGANXREZXIT</span></div>
+                                <div class="contact-item">
+                                    <i class="fas fa-map-pin"></i>
+                                    <span>Jl. Alien Bimasakti No. 42, Planet X</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>+992 92 630 8814</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>alien@juraganshop.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>Channel: @JURAGANXREZXIT</span>
+                                </div>
                                 <a href="${channelUrl}" target="_blank" class="btn-channel" style="display: block; padding: 1rem; text-decoration: none;">
-                                    <i class="fab fa-whatsapp"></i> Join Channel
+                                    <i class="fab fa-whatsapp"></i> Join Saluran Klik Di Sini
                                 </a>
                             </div>
                             
-                            <!-- Lokasi dengan Foto Alien -->
                             <div class="alien-location">
                                 <div class="alien-image-container">
                                     <div class="alien-image-placeholder">
                                         👽
                                     </div>
-                                    <div class="alien-name"></div>
                                     <div class="alien-location-text">
                                         <i class="fas fa-map-pin"></i>
-                                        <span>Kantor Virtual (🔗) Planet Zog</span>
+                                        <span>Kantor Garena (🔗) Planet Zog</span>
                                     </div>
                                     
-                                    <!-- Gallery Alien Kecil -->
+                                    <!-- 4 Logo Alien Bergerak -->
                                     <div class="alien-gallery">
                                         <div class="alien-mini">
                                             <span>👾</span>
@@ -717,6 +1579,10 @@
                                             <span>🤖</span>
                                             <p>REZXIT</p>
                                         </div>
+                                        <div class="alien-mini">
+                                            <span>👻</span>
+                                            <p>GHOST</p>
+                                        </div>
                                     </div>
                                     
                                     <p style="color: #7eff00; font-size: 0.9rem; margin-top: 0.5rem;">
@@ -729,16 +1595,42 @@
                 `;
             }
 
+            // Tutup menu mobile setelah klik
             navLinksContainer.classList.remove('show');
         }
 
-        window.openModal = function(productId) {
+        // Fungsi untuk switch platform
+        window.switchPlatform = function(platform, event) {
+            // Update tab aktif
+            document.querySelectorAll('.platform-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update content aktif
+            document.querySelectorAll('.platform-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${platform}-content`).classList.add('active');
+        };
+
+        // Fungsi untuk membuka modal - PASTIKAN INI
+        window.openModal = function(productId, platform) {
+            let products = [];
+            if (platform === 'android') {
+                products = androidProducts;
+            } else if (platform === 'ios') {
+                products = iosProducts;
+            } else if (platform === 'student') {
+                products = studentProducts;
+            }
+            
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
             modalContent.innerHTML = `
                 <h2>${product.name}</h2>
-                <div class="modal-price">${product.price.toLocaleString('id-ID')}</div>
+                <div class="modal-price">Rp ${product.price.toLocaleString('id-ID')}</div>
                 <div class="modal-icon">${product.icon}</div>
                 <div class="modal-desc">${product.fullDesc}</div>
                 <a href="${channelUrl}" target="_blank" class="modal-channel-btn">
@@ -746,9 +1638,14 @@
                 </a>
             `;
 
+            // TAMPILKAN MODAL
             modal.classList.add('active');
+            
+            // Cegah scroll di background
+            document.body.style.overflow = 'hidden';
         };
 
+        // Event listener untuk navigasi
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -756,19 +1653,263 @@
             });
         });
 
+        // Toggle menu mobile
         menuToggle.addEventListener('click', () => {
             navLinksContainer.classList.toggle('show');
         });
 
+        // Tutup modal
         closeModal.addEventListener('click', () => {
             modal.classList.remove('active');
+            document.body.style.overflow = ''; // Kembalikan scroll
         });
 
         window.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('active');
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Kembalikan scroll
+            }
         });
 
-        renderPage('home');
+        // Tampilkan halaman beranda saat pertama kali dibuka
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPage('home');
+        });
+    </script>
+
+    <!-- Script Efek Air Jatuh Putih -->
+    <script>
+        (function() {
+            const rainContainer = document.getElementById('rain-container');
+            let rainInterval;
+            let cleanupInterval;
+            let isRaining = false;
+            
+            const rainCount = 100;
+            
+            function createRaindrop() {
+                const raindrop = document.createElement('div');
+                raindrop.className = 'raindrop';
+                
+                const left = Math.random() * 100;
+                const duration = Math.random() * 2 + 1;
+                const delay = Math.random() * 5;
+                const width = Math.random() * 2 + 1;
+                const height = Math.random() * 25 + 10;
+                const blur = Math.random() * 3;
+                
+                raindrop.style.left = left + '%';
+                raindrop.style.animationDuration = duration + 's';
+                raindrop.style.animationDelay = delay + 's';
+                raindrop.style.width = width + 'px';
+                raindrop.style.height = height + 'px';
+                raindrop.style.filter = `blur(${blur * 0.2}px)`;
+                
+                rainContainer.appendChild(raindrop);
+            }
+            
+            function createDewDrops() {
+                for (let i = 0; i < 15; i++) {
+                    const dew = document.createElement('div');
+                    dew.className = 'dew-drop';
+                    
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 30;
+                    const size = Math.random() * 10 + 5;
+                    const delay = Math.random() * 5;
+                    
+                    dew.style.left = left + '%';
+                    dew.style.top = top + '%';
+                    dew.style.width = size + 'px';
+                    dew.style.height = size + 'px';
+                    dew.style.animationDelay = delay + 's';
+                    
+                    rainContainer.appendChild(dew);
+                }
+            }
+            
+            window.startRain = function() {
+                if (isRaining) return;
+                isRaining = true;
+                
+                rainContainer.innerHTML = '';
+                
+                for (let i = 0; i < rainCount; i++) {
+                    createRaindrop();
+                }
+                
+                createDewDrops();
+                
+                rainInterval = setInterval(() => {
+                    if (rainContainer.classList.contains('active')) {
+                        const newDrops = Math.floor(Math.random() * 3) + 2;
+                        for (let i = 0; i < newDrops; i++) {
+                            createRaindrop();
+                        }
+                    }
+                }, 2000);
+                
+                cleanupInterval = setInterval(() => {
+                    if (rainContainer.classList.contains('active')) {
+                        const raindrops = document.querySelectorAll('.raindrop');
+                        if (raindrops.length > rainCount * 1.5) {
+                            for (let i = 0; i < raindrops.length - rainCount; i++) {
+                                if (raindrops[i]) raindrops[i].remove();
+                            }
+                        }
+                    }
+                }, 8000);
+            };
+            
+            window.stopRain = function() {
+                isRaining = false;
+                if (rainInterval) clearInterval(rainInterval);
+                if (cleanupInterval) clearInterval(cleanupInterval);
+                rainContainer.innerHTML = '';
+            };
+            
+            // Efek ripple saat klik
+            document.addEventListener('click', function(e) {
+                if (rainContainer.classList.contains('active')) {
+                    const ripple = document.createElement('div');
+                    ripple.className = 'ripple';
+                    ripple.style.left = e.clientX + 'px';
+                    ripple.style.top = e.clientY + 'px';
+                    document.body.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 1500);
+                }
+            });
+        })();
+    </script>
+
+    <!-- Script Efek Bintik-bintik -->
+    <script>
+        (function() {
+            const particlesContainer = document.getElementById('particles-container');
+            const staticContainer = document.getElementById('static-particles');
+            
+            if (!particlesContainer || !staticContainer) return;
+            
+            // Konfigurasi
+            const movingParticleCount = 40;  // Bintik yang bergerak
+            const staticParticleCount = 60;   // Bintik statis yang berkedip
+            
+            // Warna-warna ungu dan putih
+            const colors = [
+                'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(138,43,226,0.7))',
+                'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(148,0,211,0.6))',
+                'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(153,50,204,0.7))',
+                'radial-gradient(circle at 30% 30%, rgba(255,255,255,1), rgba(186,85,211,0.5))',
+                'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(128,0,128,0.6))'
+            ];
+            
+            // Buat bintik bergerak
+            for (let i = 0; i < movingParticleCount; i++) {
+                createMovingParticle();
+            }
+            
+            // Buat bintik statis yang berkedip
+            for (let i = 0; i < staticParticleCount; i++) {
+                createStaticParticle();
+            }
+            
+            function createMovingParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random ukuran (2px - 8px)
+                const size = Math.random() * 6 + 2;
+                
+                // Random posisi horizontal
+                const left = Math.random() * 100;
+                
+                // Random durasi animasi (8s - 20s)
+                const duration = Math.random() * 12 + 8;
+                
+                // Random delay (0 - 15s)
+                const delay = Math.random() * 15;
+                
+                // Pilih warna random
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = left + '%';
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = delay + 's';
+                particle.style.background = color;
+                
+                // Random opacity awal
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            function createStaticParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'static-particle';
+                
+                // Random ukuran (1px - 5px)
+                const size = Math.random() * 4 + 1;
+                
+                // Random posisi (seluruh layar)
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                // Random durasi kedip (1s - 5s)
+                const duration = Math.random() * 4 + 1;
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                
+                // Pilih warna random
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = left + '%';
+                particle.style.top = top + '%';
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = delay + 's';
+                particle.style.background = color;
+                
+                // Random opacity awal
+                particle.style.opacity = Math.random() * 0.6 + 0.2;
+                
+                staticContainer.appendChild(particle);
+            }
+            
+            // Tambah bintik baru secara berkala (untuk variasi)
+            setInterval(() => {
+                if (document.querySelectorAll('.particle').length < movingParticleCount + 5) {
+                    createMovingParticle();
+                }
+                
+                // Hapus bintik yang sudah terlalu banyak
+                const particles = document.querySelectorAll('.particle');
+                if (particles.length > movingParticleCount * 1.5) {
+                    for (let i = 0; i < particles.length - movingParticleCount; i++) {
+                        if (particles[i]) particles[i].remove();
+                    }
+                }
+            }, 5000);
+            
+            // Efek parallax saat scroll (bintik bergerak lebih lambat)
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const particles = document.querySelectorAll('.static-particle');
+                particles.forEach((particle, index) => {
+                    // Efek gerakan halus saat scroll
+                    const speed = 0.1 + (index % 3) * 0.05;
+                    const yOffset = scrollY * speed;
+                    particle.style.transform = `translateY(${yOffset}px)`;
+                });
+            });
+            
+        })();
     </script>
 </body>
 </html>
