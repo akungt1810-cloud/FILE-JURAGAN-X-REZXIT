@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>JURAGAN X REZXIT · File & Mod Premium FF</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0e17;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Navbar - Mobile First */
+        .navbar {
+            background: rgba(10, 15, 25, 0.95);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #ff6b8133;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f7b731, #ff6b81);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Mobile Menu */
+        .nav-links {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            background: #0a0e17;
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            gap: 1rem;
+            border: 1px solid #ff6b8133;
+        }
+
+        .nav-links.show {
+            display: flex;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            color: #cbd5e8;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            padding: 0.8rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            border-bottom-color: #ff6b81;
+            color: #ffffff;
+        }
+
+        .menu-toggle {
+            display: block;
+            font-size: 2rem;
+            color: #ff6b81;
+            cursor: pointer;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 5%;
+        }
+
+        /* Hero Section - Mobile */
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: #a0b5d4;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Features Grid - Mobile */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #ff6b8133;
+            border-radius: 20px;
+            padding: 1.2rem 0.8rem;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #ff6b81;
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: #ff9f7c;
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.8rem;
+            color: #94a9c5;
+        }
+
+        /* Section Label */
+        .section-label {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.5rem;
+            background: linear-gradient(135deg, #fcb69f, #ffd6a5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            color: #94a9c5;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #ff6b81;
+            padding-left: 1rem;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .product-card {
+            background: rgba(20, 28, 40, 0.8);
+            border: 1px solid #ff6b8133;
+            border-radius: 30px;
+            padding: 1.5rem 1.2rem;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: #ff6b81;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px #ff6b8120;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff3860;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-hot { background: #fa8231; }
+        .badge-best { background: #f7b731; color: #1a1e2b; }
+        .badge-popular { background: #2d98da; }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: #94a9c5;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.7rem 1rem;
+            border-radius: 15px;
+            margin: 0.8rem 0;
+            min-height: 3.5rem;
+            border-left: 3px solid #ff9f7c;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffb347;
+            margin: 0.8rem 0;
+        }
+
+        .product-price::before {
+            content: 'Rp';
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #94a9c5;
+            margin-right: 0.2rem;
+        }
+
+        /* Buttons */
+        .card-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .btn-detail, .btn-channel {
+            flex: 1;
+            padding: 0.8rem 0.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            text-decoration: none;
+            transition: 0.2s;
+            min-height: 44px;
+        }
+
+        .btn-detail {
+            background: transparent;
+            border: 2px solid #ff6b81;
+            color: #ff6b81;
+        }
+
+        .btn-detail:hover {
+            background: #ff6b81;
+            color: white;
+        }
+
+        .btn-channel {
+            background: #128C7E;
+            color: white;
+            border: 2px solid #128C7E;
+        }
+
+        .btn-channel:hover {
+            background: #075E54;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a2436;
+            border-radius: 30px;
+            max-width: 90%;
+            width: 100%;
+            padding: 1.8rem;
+            position: relative;
+            border: 1px solid #ff6b81;
+            animation: modalFade 0.3s;
+            margin: 1rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #94a9c5;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-price {
+            font-size: 1.6rem;
+            color: #ffb347;
+            margin: 0.8rem 0;
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin: 0.8rem 0;
+        }
+
+        .modal-desc {
+            background: #0f172a;
+            padding: 1.2rem;
+            border-radius: 20px;
+            margin: 1.2rem 0;
+            color: #cbd5e8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .modal-channel-btn {
+            display: block;
+            background: #128C7E;
+            color: white;
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 1rem;
+            width: 100%;
+            text-align: center;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        /* Contact Page - Dengan Foto Alien */
+        .contact-wrapper {
+            background: rgba(20, 28, 40, 0.6);
+            border-radius: 30px;
+            padding: 1.5rem;
+            border: 1px solid #ff6b8133;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            color: #ff9f7c;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            color: #cbd5e8;
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .contact-item i {
+            width: 1.8rem;
+            color: #ff6b81;
+            font-size: 1.2rem;
+        }
+
+        /* Lokasi dengan Foto Alien */
+        .alien-location {
+            background: #1f2a3c;
+            border-radius: 25px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: #94a9c5;
+            border: 2px dashed #ff6b8133;
+            min-height: 300px;
+        }
+
+        .alien-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .alien-emoji-large {
+            font-size: 5rem;
+            filter: drop-shadow(0 0 15px #7eff00);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .alien-image-placeholder {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            border: 4px solid #f1c40f;
+            box-shadow: 0 0 30px #2ecc71;
+        }
+
+        .alien-name {
+            font-size: 1.2rem;
+            color: #f1c40f;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .alien-location-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #94a9c5;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        .alien-location-text i {
+            color: #ff6b81;
+        }
+
+        /* Alien Gallery */
+        .alien-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .alien-mini {
+            background: #2c3e50;
+            border-radius: 15px;
+            padding: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            border: 1px solid #ff6b8133;
+        }
+
+        .alien-mini span {
+            font-size: 2rem;
+        }
+
+        .alien-mini p {
+            font-size: 0.7rem;
+            color: #94a9c5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-top: 1px solid #ff6b8133;
+            color: #94a9c5;
+            font-size: 0.9rem;
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                width: auto;
+                flex-direction: row;
+                background: transparent;
+                padding: 0;
+                margin-top: 0;
+                border: none;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .hero-sub {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">JURAGAN X REZXIT</div>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#" data-page="home" class="active">Beranda</a>
+            <a href="#" data-page="products">Produk</a>
+            <a href="#" data-page="contact">Kontak</a>
+        </div>
+    </nav>
+
+    <main class="container" id="mainContent"></main>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 JURAGAN X REZXIT — File & Mod Premium FF Terlengkap</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">👽 Kantor Virtual bersama Alien Friends 👽</p>
+    </footer>
+
+    <script>
+        const products = [
+            { id: 1, name: 'REZXIT DRAG HS 38%', price: 35000, shortDesc: 'Perfect untuk pemula, tingkatkan akurasi headshot dengan mudah', fullDesc: 'RezXit HS 38% — cocok untuk pemula. File teruji, akurasi meningkat signifikan. Support Android dan iOS.', icon: '🎯', badge: null },
+            { id: 2, name: 'REZXIT DRAG HS 55%', price: 50000, shortDesc: 'Level menengah dengan tingkat akurasi yang lebih baik', fullDesc: 'RezXit HS 55% untuk pemain menengah. Rasio headshot stabil, anti lag. Update terbaru patch OB45.', icon: '⚡', badge: null },
+            { id: 3, name: 'REZXIT DRAG HS 78%', price: 100000, shortDesc: 'High accuracy untuk player competitive', fullDesc: 'POPULAR · RezXit HS 78%. Akurasi tinggi, settingan pro. Work di semua server.', icon: '🔥', badge: 'POPULAR' },
+            { id: 4, name: 'REZXIT DRAG HS 89%', price: 150000, shortDesc: 'Pro level dengan akurasi sangat tinggi', fullDesc: 'HOT · RezXit HS 98% untuk rank push. Akurasi mendekati sempurna, anti banned 30 hari.', icon: '💎', badge: 'HOT' },
+            { id: 5, name: 'REZXIT DRAG HS 98%', price: 180000, shortDesc: 'Maximum accuracy - Godlike level!', fullDesc: 'BEST · RezXit HS 98% versi MAX. Akurasi 98% stabil, fitur unlock all skin.', icon: '👑', badge: 'BEST' }
+        ];
+
+        const channelUrl = 'https://www.whatsapp.com/channel/0029VbCZAj2It5s53GawHg2S';
+        const mainContent = document.getElementById('mainContent');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinksContainer = document.getElementById('navLinks');
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+
+        function renderPage(page) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === page) link.classList.add('active');
+            });
+
+            if (page === 'home') {
+                mainContent.innerHTML = `
+                    <div class="hero-title">JURAGAN X REZXIT</div>
+                    <div class="hero-sub">File & Mod Premium FF Terlengkap — Koleksi file dan mod Free Fire terlengkap dengan kualitas terbaik. RezXit, Rimbot, hingga Mod Menu untuk Android, iOS, dan PC. Trusted seller dengan ribuan customer puas.</div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card"><i class="fas fa-check-circle feature-icon"></i><h4>File Berkualitas</h4><p>Semua file teruji dan terbukti bekerja dengan baik.</p></div>
+                        <div class="feature-card"><i class="fas fa-sync-alt feature-icon"></i><h4>Update Rutin</h4><p>File selalu diupdate mengikuti patch terbaru.</p></div>
+                        <div class="feature-card"><i class="fas fa-shield-alt feature-icon"></i><h4>Anti Banned</h4><p>System keamanan berlapis untuk melindungi akun.</p></div>
+                        <div class="feature-card"><i class="fas fa-headset feature-icon"></i><h4>Support 24/7</h4><p>Tim support siap membantu instalasi kapan saja.</p></div>
+                        <div class="feature-card"><i class="fas fa-star feature-icon"></i><h4>Trusted Seller</h4><p>Dipercaya ribuan customer dengan rating 5 bintang.</p></div>
+                        <div class="feature-card"><i class="fas fa-bolt feature-icon"></i><h4>Proses Cepat</h4><p>File langsung dikirim setelah pembayaran.</p></div>
+                    </div>
+
+                    <div class="section-label">List File JURAGAN X REZXIT</div>
+                    <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda <strong>ANDROID</strong></div>
+                    
+                    <button class="btn-detail" onclick="renderPage('products')" style="width: 100%; padding: 1rem;">
+                        <i class="fas fa-arrow-right"></i> Lihat Semua File
+                    </button>
+                `;
+            }
+            else if (page === 'products') {
+                let productsHTML = `
+                    <div class="section-label">List File JURAGAN X REZXIT</div>
+                    <div class="section-desc">Pilih file yang sesuai dengan kebutuhan Anda <strong>ANDROID</strong></div>
+                    <div class="product-grid">
+                `;
+
+                products.forEach(product => {
+                    const shortDesc = product.shortDesc.length > 50 ? product.shortDesc.substring(0, 50) + '...' : product.shortDesc;
+                    let badgeClass = 'product-badge';
+                    if (product.badge === 'HOT') badgeClass += ' badge-hot';
+                    else if (product.badge === 'BEST') badgeClass += ' badge-best';
+                    else if (product.badge === 'POPULAR') badgeClass += ' badge-popular';
+
+                    productsHTML += `
+                        <div class="product-card">
+                            ${product.badge ? `<div class="${badgeClass}">${product.badge}</div>` : ''}
+                            <div class="product-icon">${product.icon}</div>
+                            <div class="product-name">${product.name}</div>
+                            <div class="product-desc">${shortDesc}</div>
+                            <div class="product-price">${product.price.toLocaleString('id-ID')}</div>
+                            <div class="card-actions">
+                                <button class="btn-detail" onclick="openModal(${product.id})">
+                                    <i class="fas fa-info-circle"></i> Detail
+                                </button>
+                                <a href="${channelUrl}" target="_blank" class="btn-channel">
+                                    <i class="fab fa-whatsapp"></i> Order
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                productsHTML += '</div>';
+                mainContent.innerHTML = productsHTML;
+            }
+            else if (page === 'contact') {
+                mainContent.innerHTML = `
+                    <div class="section-label">Kontak JURAGAN X REZXIT</div>
+                    <div class="contact-wrapper">
+                        <div class="contact-grid">
+                            <div class="contact-info">
+                                <h3>Hubungi Kami</h3>
+                                <div class="contact-item"><i class="fas fa-map-pin"></i><span>Jl. Alien Bimasakti No. 42, Planet X</span></div>
+                                <div class="contact-item"><i class="fas fa-phone"></i><span>+992 92 630 8814</span></div>
+                                <div class="contact-item"><i class="fas fa-envelope"></i><span>alien@juraganshop.com</span></div>
+                                <div class="contact-item"><i class="fab fa-whatsapp"></i><span>Channel: @JURAGANXREZXIT</span></div>
+                                <a href="${channelUrl}" target="_blank" class="btn-channel" style="display: block; padding: 1rem; text-decoration: none;">
+                                    <i class="fab fa-whatsapp"></i> Join Channel
+                                </a>
+                            </div>
+                            
+                            <!-- Lokasi dengan Foto Alien -->
+                            <div class="alien-location">
+                                <div class="alien-image-container">
+                                    <div class="alien-image-placeholder">
+                                        👽
+                                    </div>
+                                    <div class="alien-name"></div>
+                                    <div class="alien-location-text">
+                                        <i class="fas fa-map-pin"></i>
+                                        <span>Kantor Virtual (🔗) Planet Zog</span>
+                                    </div>
+                                    
+                                    <!-- Gallery Alien Kecil -->
+                                    <div class="alien-gallery">
+                                        <div class="alien-mini">
+                                            <span>👾</span>
+                                            <p>JURAGAN</p>
+                                        </div>
+                                        <div class="alien-mini">
+                                            <span>👽</span>
+                                            <p>ALIEN</p>
+                                        </div>
+                                        <div class="alien-mini">
+                                            <span>🤖</span>
+                                            <p>REZXIT</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <p style="color: #7eff00; font-size: 0.9rem; margin-top: 0.5rem;">
+                                        <i class="fas fa-crown"></i> Bertemu Alien = Bonus File Premium!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            navLinksContainer.classList.remove('show');
+        }
+
+        window.openModal = function(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            modalContent.innerHTML = `
+                <h2>${product.name}</h2>
+                <div class="modal-price">${product.price.toLocaleString('id-ID')}</div>
+                <div class="modal-icon">${product.icon}</div>
+                <div class="modal-desc">${product.fullDesc}</div>
+                <a href="${channelUrl}" target="_blank" class="modal-channel-btn">
+                    <i class="fab fa-whatsapp"></i> Order via Channel
+                </a>
+            `;
+
+            modal.classList.add('active');
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                renderPage(link.dataset.page);
+            });
+        });
+
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('show');
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        renderPage('home');
+    </script>
+</body>
+</html>
